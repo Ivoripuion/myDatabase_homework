@@ -84,7 +84,7 @@ def init():
     stu_1=Student(
         name="admin",
         gender="male",
-        id=1711268,
+        id=123456,
         major="IS"
     )
     db.session.add(admin_1)
