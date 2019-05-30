@@ -1,0 +1,32 @@
+﻿{% extends "mainbase.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}解题状态{% endblock %}
+
+{% block page_content %}
+{% if error %}
+<h1>{{error}}</h1>
+{% endif %}
+{{ wtf.quick_form(form) }}
+<br/>
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解题量</h1>
+<ul>
+    <ul>
+        <ul>
+			<table width="800" height="40" border="1">
+			  <tr>
+				<td width="200">选手学号&nbsp;</td>
+				<td width="200">选手解题量&nbsp;</td>
+			  </tr>
+			</table>	
+			{% for player in all_players %}
+				<table width="800" height="40" border="1">
+				  <tr>
+					<td width="200">{{player.stu_id}}&nbsp;</td>
+					<td width="200">{{player.sol_num}}&nbsp;</td>
+				  </tr>
+				</table>
+			{% endfor %}
+        </ul>
+    </ul>
+</ul>
+{% endblock %}

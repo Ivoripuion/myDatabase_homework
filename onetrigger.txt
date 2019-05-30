@@ -1,0 +1,7 @@
+DELIMITER $$
+CREATE TRIGGER que_numAdd 
+	AFTER INSERT ON solve
+	FOR EACH ROW
+BEGIN
+	UPDATE players SET sol_num=sol_num+1 WHERE stu_id=New.player_id;
+END$$

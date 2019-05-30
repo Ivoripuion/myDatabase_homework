@@ -1,0 +1,41 @@
+"""
+db.engine.execute("create table Student"
+                  "(num INT PRIMARY KEY NOT NULL,"
+                  "gender enum('male','female') NOT NULL,"
+                  "name VARCHAR(15) NOT NULL,"
+                  "major VARCHAR (255) NOT NULL)")
+db.engine.execute("create table Admin"
+                  "(admin_num INT PRIMARY KEY NOT NULL,"
+                  "FOREIGN KEY(admin_num) REFERENCES Student(num),"
+                  "admin_account INT NOT NULL)")
+db.engine.execute("create table Player"
+                  "(player_num INT PRIMARY KEY NOT NULL,"
+                  "FOREIGN KEY(player_num) REFERENCES Student(num),"
+                  "player_account INT NOT NULL,"
+                  "goals INT CHECK(goals>=0))")
+db.engine.execute("create table Question"
+                  "(content VARCHAR(255) NOT NULL,"
+                  "hint VARCHAR(255),"
+                  "solution VARCHAR(255) NOT NULL,"
+                  "interest ENUM('pwn','reverse','web','misc','crypto') NOT NULL)")
+db.engine.execute("create table Team"
+                  "(ID INT PRIMARY KEY NOT NULL,"
+                  "name VARCHAR(20) NOT NULL)")
+db.engine.execute("create table form"
+                  "(num INT NOT NULL,"
+                  "ID INT PRIMARY KEY NOT NULL,"                 
+                  "FOREIGN KEY(num) REFERENCES Student(num),"
+                  "FOREIGN KEY(ID) REFERENCES Team(ID))")
+db.engine.execute("create table issue"
+                  "(que_content VARCHAR(255) NOT NULL,"
+                  "que_hint VARCHAR(255) NOT NULL,"
+                  "player_num INT NOT NULL NOT NULL,"
+                  "FOREIGN KEY(que_hint) REFERENCES Quetion(hint),"
+                  "FOREIGN KEY(que_content) REFERENCES Quetion(content),"
+                  "FOREIGN KEY(player_num) REFERENCES Player(play_num))")
+db.engine.execute("create table solve"
+                  "(que_content VARCHAR(255) NOT NULL,"
+                  "player_num INT NOT NULL,"                  
+                  "FOREIGN KEY(que_content) REFERENCES Question(content),"
+                  "FOREIGN KEY(player_num) REFERENCES Student(num))")
+"""

@@ -1,0 +1,58 @@
+{% extends "mainbase.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}CTFManagement{% endblock %}
+
+{% block page_content %}
+<li><a href="/add">添加选手</a></li>
+<br/>
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选手名单</h1>
+<ul>
+    <ul>
+        <ul>
+			<table width="800" height="40" border="1">
+			  <tr>
+				<td width="200">选手学号&nbsp;</td>
+				<td width="200">选手指导老师&nbsp;</td>
+				<td width="200">选手账号&nbsp;</td>
+			  </tr>
+			</table>	
+			{% for player in all_players %}
+				<table width="800" height="40" border="1">
+				  <tr>
+					<td width="200">{{player.stu_id}}&nbsp;</td>
+					<td width="200">{{player.guiding_teacher_name}}&nbsp;</td>
+					<td width="200">{{player.player_num}}&nbsp;</td>
+				  </tr>
+				</table>
+			{% endfor %}
+        </ul>
+    </ul>
+</ul>
+{{ wtf.quick_form(form) }}<br/>
+<h2>搜索结果</h2>
+<table width="900" height="40" border="1">
+  <tr>
+	<td width="300">选手学号&nbsp;</td>
+	<td width="300">选手姓名&nbsp;</td>
+	<td width="300">选手性别&nbsp;</td>
+	<td width="300">选手专业&nbsp;</td>
+	<td width="300">选手指导老师&nbsp;</td>
+	<td width="300">选手账号&nbsp;</td>
+	<td width="300">操作&nbsp;</td>
+  </tr>
+</table>
+{% if s_player %}
+	<table width="900" height="40" border="1">
+	  <tr>
+		<td width="300">{{s_player.stu_id}}&nbsp;</td>
+		<td width="300">{{s_stu.name}}&nbsp;</td>
+		<td width="300">{{s_stu.gender}}&nbsp;</td>
+		<td width="300">{{s_stu.major}}&nbsp;</td>
+		<td width="300">{{s_player.guiding_teacher_name}}&nbsp;</td>
+		<td width="300">{{s_player.player_num}}&nbsp;</td>
+		<td width="300"><a href="/del_player/{{s_player.stu_id}}">删除选手</a>&nbsp;</td>
+	  </tr>
+	</table>
+{% endif %}
+<br/>
+{% endblock %}

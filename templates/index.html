@@ -1,0 +1,11 @@
+﻿{% extends "mainbase.html" %}
+{% block title %}CTFManagement{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+	<h1>你好,{{username}}!</h1>
+</div>
+<li><a href="/playerAu">成员管理</a></li>
+<li><a href="/queAu">题目管理</a></li>
+<li><a href="/solve_solution">解题状态</a></li>
+{% endblock %}
