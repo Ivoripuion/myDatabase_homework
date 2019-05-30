@@ -11,7 +11,7 @@ app=Flask(__name__)
 bootstrap=Bootstrap(app)
 
 # 配置数据库的地址URI , 格式 "数据库类型+数据库驱动名称://用户名:密码@机器地址:端口号/数据库名"
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:root@localhost/CTFManagement"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:pwd@localhost/CTFManagement"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['SECRET_KEY']='yigemima'
 
@@ -78,7 +78,7 @@ class Solve(db.Model):
 def init():
     db.create_all()
     admin_1=Admin(
-        stu_id=1711268,
+        stu_id=123456,
         admin_num="admin",
         admin_pwd="pwd")
     stu_1=Student(
